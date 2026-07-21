@@ -1,0 +1,13 @@
+#https://alacritty.org/config-alacritty.html
+[font]
+size = 25
+
+[env]
+TERM = "xterm-256color"
+resize_increments = "True"		# discrete steps equal to cell dimensions
+
+[window]
+opacity=1
+blur=true
+decorations = "None"
+startup_mode = "Maximized"
