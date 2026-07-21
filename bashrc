@@ -51,24 +51,25 @@ shopt -u nullglob
 
 # Aliases
 
-# tip: use \command to avoid aliases
-if ls --color=auto </dev/null &>/dev/null; then
-    alias ls='ls -p --color=auto'
-else
-    alias ls='ls -p'
-fi
-
-alias ll='ls -lha'
-grep --color=auto < /dev/null &>/dev/null &&
-    alias grep='grep --color=auto'
-diff --color=auto < /dev/null &>/dev/null &&
-    alias diff='diff --color=auto'
-xdg-open --version < /dev/null &>/dev/null &&
-    alias open='xdg-open'
+# tip: use `\cmd` or `command cmd` to dodge aliases of cmd.
 alias shred='shred -z -u -n 3'
 alias mv='mv -b'
-alias checkspaces="grep -nH ' $'"
-alias checktabs="grep -nHP '\t$'"
+alias ls='ls -p'
+alias ll='ls -lha'
+alias checkwhitespace="grep -nHE '[[:blank:]]+$'"
+
+ls --color=auto </dev/null &>/dev/null &&
+    alias ls='ls -p --color=auto'
+
+grep --color=auto < /dev/null &>/dev/null &&
+    alias grep='grep --color=auto'
+
+diff --color=auto < /dev/null &>/dev/null &&
+    alias diff='diff --color=auto'
+
+xdg-open --version < /dev/null &>/dev/null &&
+    alias open='xdg-open'
+
 apt </dev/null &>/dev/null &&
     alias upup='sudo apt install && sudo apt upgrade'
 

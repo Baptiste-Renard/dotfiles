@@ -26,3 +26,8 @@ set secure
 "set path+=**          "add all files recursively to path (for the find command)
 set wildmenu
 "set mouse=a            "allow mouse select (can mess up terminal copy/paste)
+
+"Enable 24-bit RGB colors in terminal Vim
+if has('termguicolors')
+  set termguicolors
+endif
