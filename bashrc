@@ -8,7 +8,7 @@
 
 
 # Set environment
-export EDITOR='vim'
+export EDITOR='vi'
 export PAGER='less'
 export LESS='-R -i'
 
