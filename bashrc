@@ -70,7 +70,7 @@ diff --color=auto < /dev/null &>/dev/null &&
 xdg-open --version < /dev/null &>/dev/null &&
     alias open='xdg-open'
 
-apt </dev/null &>/dev/null &&
+apt --version </dev/null &>/dev/null &&
     alias upup='sudo apt install && sudo apt upgrade'
 
 
