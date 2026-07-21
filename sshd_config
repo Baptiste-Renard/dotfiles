@@ -1,0 +1,9 @@
+PermitRootLogin no
+MaxAuthTries 6
+PubkeyAuthentication yes
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+KbdInteractiveAuthentication no
+
+MaxSessions 10
