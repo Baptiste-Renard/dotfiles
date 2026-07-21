@@ -32,20 +32,18 @@ HISTCONTROL="ignoredups:ignorespace:erasedups"
 shopt -u autocd
 shopt -u cdspell
 # update LINES and COLUMNS after each command
-shopt -u checkwinsize
+shopt -s checkwinsize
 # include dotfiles in *
 shopt -u dotglob
 # enable ** to match all files recursively
 shopt -u globstar
-
+# extand globing
 shopt -u extglob
-
 # In bash, if a pattern with * doesn't match any file,
 # it will be expanded as just the pattern.
 # Enable nullglob and the pattern will expand to nothing.
 # (in the case of ls, it lists all files, be carefull).
 shopt -u nullglob
-
 # set -o vi
 
 
