@@ -27,7 +27,10 @@ set secure
 set wildmenu
 "set mouse=a            "allow mouse select (can mess up terminal copy/paste)
 
-"Enable 24-bit RGB colors in terminal Vim
-if has('termguicolors')
+" enable 24-bit color
+if exists('+termguicolors')
   set termguicolors
 endif
+
+" ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
+set background=dark
