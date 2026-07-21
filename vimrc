@@ -1,4 +1,6 @@
 " make `~/.vimrc` link to this file
+
+
 "spaces
 set expandtab          "spaces on tab
 set tabstop=4          "visual width of tabs
@@ -6,34 +8,41 @@ set softtabstop=4      "amount of spaces to insert/delete on tab
 set shiftwidth=4       "auto indenting
 set smartindent
 
+
 "decoration
 set cursorline
-"set number
+set nonumber
+syntax on
+" enable 24-bit color
+if exists('+termguicolors')
+  set termguicolors
+endif
+" ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
+set background=dark
+set listchars=tab:▸\ ,trail:·
+set list
+
 
 "search
 set hlsearch           "highlight search
 set incsearch          "search as you type
 set ignorecase
 
+
+"timeouts
+set timeout
+set ttimeout
+set timeoutlen=3000
+set ttimeoutlen=50
+
+
 "dump
-syntax on
 set encoding=utf-8
 set hidden             "switch buffers without having to save them
-set nocompatible
+set nocompatible       "don't force compatibility with vi
 filetype plugin on
 set exrc               "execute .vimrc in working directory
-set secure
+set secure             "disable shell access to local .vimrc
 "set path+=**          "add all files recursively to path (for the find command)
 set wildmenu
 "set mouse=a            "allow mouse select (can mess up terminal copy/paste)
-
-" enable 24-bit color
-if exists('+termguicolors')
-  set termguicolors
-endif
-
-" ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
-set background=dark
-
-set listchars=tab:▸\ ,trail:·
-set list
