@@ -34,3 +34,6 @@ endif
 
 " ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
 set background=dark
+
+set listchars=tab:▸\ ,trail:·
+set list
