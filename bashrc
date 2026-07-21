@@ -55,6 +55,7 @@ alias mv='mv -b'
 alias ls='ls -p'
 alias ll='ls -lha'
 alias checkwhitespace="grep -nHE '[[:blank:]]+$'"
+alias gitlog='git log --all --graph --decorate=auto'
 
 ls --color=auto </dev/null &>/dev/null &&
     alias ls='ls -p --color=auto'
