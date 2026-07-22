@@ -29,14 +29,14 @@ HISTCONTROL="ignoredups:ignorespace:erasedups"
 # Shell options
 
 # cd enhancers
-shopt -u autocd
-shopt -u cdspell
+shopt -s autocd
+shopt -s cdspell
 # update LINES and COLUMNS after each command
 shopt -s checkwinsize
 # include dotfiles in *
 shopt -u dotglob
 # enable ** to match all files recursively
-shopt -u globstar
+shopt -s globstar
 # extand globing
 shopt -u extglob
 # In bash, if a pattern with * doesn't match any file,
@@ -57,20 +57,25 @@ alias ll='ls -lha'
 alias checkwhitespace="grep -nHE '[[:blank:]]+$'"
 alias gitlog='git log --all --graph --decorate=auto'
 
-ls --color=auto </dev/null &>/dev/null &&
+if ls --color=auto &>/dev/null; then
     alias ls='ls -p --color=auto'
+fi
 
-grep --color=auto < /dev/null &>/dev/null &&
+if echo | grep --color=auto "" &>/dev/null; then
     alias grep='grep --color=auto'
+fi
 
-diff --color=auto < /dev/null &>/dev/null &&
+if diff --color=auto /dev/null /dev/null &>/dev/null; then
     alias diff='diff --color=auto'
+fi
 
-xdg-open --version < /dev/null &>/dev/null &&
+if xdg-open --version &>/dev/null; then
     alias open='xdg-open'
+fi
 
-apt --version </dev/null &>/dev/null &&
+if apt --version &>/dev/null; then
     alias upup='sudo apt install && sudo apt upgrade'
+fi
 
 
 # PS1 and colors
