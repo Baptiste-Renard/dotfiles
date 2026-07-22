@@ -1,13 +1,18 @@
 #https://alacritty.org/config-alacritty.html
+#man 5 alacritty
 [font]
 size = 25
 
 [env]
 TERM = "xterm-256color"
-resize_increments = "True"		# discrete steps equal to cell dimensions
+resize_increments = "True"      # discrete steps equal to cell dimensions
 
 [window]
-opacity=1
+opacity=0.8
 blur=true
 decorations = "None"
-startup_mode = "Maximized"
+startup_mode = "Maximized"      # Or "Fullscreen"
+dynamic_title = true
+
+[mouse]
+hide_when_typing = true
