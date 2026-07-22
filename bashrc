@@ -31,6 +31,7 @@ HISTCONTROL="ignoredups:ignorespace:erasedups"
 # cd enhancers
 shopt -s autocd
 shopt -s cdspell
+shopt -s dirspell
 # update LINES and COLUMNS after each command
 shopt -s checkwinsize
 # include dotfiles in *
@@ -52,7 +53,6 @@ shopt -u nullglob
 # tip: use `\cmd` or `command cmd` to dodge aliases of cmd.
 alias shred='shred -z -u -n 3'
 alias mv='mv -b'
-alias ls='ls -p'
 alias ll='ls -lha'
 alias checkwhitespace="grep -nHE '[[:blank:]]+$'"
 alias gitlog='git log --all --graph --decorate=auto'
@@ -61,6 +61,8 @@ alias gitlog='git log --all --graph --decorate=auto'
 # This is not true for the standard POSIX shell: `command >/dev/null 2>&1`.
 if ls --color=auto &>/dev/null; then
     alias ls='ls -p --color=auto'
+else
+    alias ls='ls -p'
 fi
 
 if echo | grep --color=auto "" &>/dev/null; then
