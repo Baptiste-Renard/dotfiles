@@ -14,9 +14,9 @@ set cursorline
 set nonumber
 syntax on
 " enable 24-bit color
-if exists('+termguicolors')
-  set termguicolors
-endif
+"if exists('+termguicolors')
+"  set termguicolors
+"endif
 " ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
 set background=dark
 set listchars=tab:▸\ ,trail:·
