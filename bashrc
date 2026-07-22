@@ -57,6 +57,8 @@ alias ll='ls -lha'
 alias checkwhitespace="grep -nHE '[[:blank:]]+$'"
 alias gitlog='git log --all --graph --decorate=auto'
 
+# In bash `command &>/dev/null` will send both stdout and stderr to /dev/null.
+# This is not true for the standard POSIX shell: `command >/dev/null 2>&1`.
 if ls --color=auto &>/dev/null; then
     alias ls='ls -p --color=auto'
 fi
