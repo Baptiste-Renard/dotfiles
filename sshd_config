@@ -1,3 +1,4 @@
+# copy this file to /etc/ssh/sshd_config.d/
 PermitRootLogin no
 MaxAuthTries 6
 PubkeyAuthentication yes
