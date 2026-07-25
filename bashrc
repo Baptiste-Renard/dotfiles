@@ -113,6 +113,61 @@ xterm*|rxvt*)
 esac
 
 
+# Functions
+
+inittmp(){
+    if [[ -n "$tmp" ]]; then
+        echo "tmp already initialized" >&2
+        return 1
+    fi
+
+    tmp=$(mktemp -d) || return 1
+    if ! which df &>/dev/null ||
+        ! df --output=fstype "$tmp" |
+        grep "tmpfs" &>/dev/null; then
+
+        echo "Check filesystem of /tmp"
+    fi
+    return 0
+}
+
+cdtmp(){
+    if [[ ! -n "$tmp" ]];then
+        echo "tmp not initialized" >&2
+        return 1
+    fi
+    cd $tmp || return 1
+    return 0
+}
+
+rmtmp(){
+    if [ -d "$tmp" ];then
+        rm -rf "$tmp" || return 1
+        tmp=
+    else
+        echo "tmp not initialized" >&2
+        return 1
+    fi
+    return 0
+}
+
+cleartmp(){
+    if [ -d "$tmp" ];then
+        rm -rf "$tmp"/* || return 1
+        rm -rf "$tmp"/.* || return 1
+    else
+        echo "tmp not initialized" >&2
+        return 1
+    fi
+    return 0
+}
+
+resettmp(){
+    rmtmp || return 1
+    inittmp || return 1
+}
+
+
 # POSIX
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
