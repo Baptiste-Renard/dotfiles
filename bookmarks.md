@@ -5,6 +5,8 @@
 * [dev](#Dev)
     * [Bash](#Bash)
     * [Latex](#Latex)
+    * [eBPF](#eBPF)
+    * [Markdown](#Markdown)
 * [ComputerSecurity](#ComputerSecurity)
 * [Languages](#Languages)
 * [Music](#Music)
@@ -17,13 +19,15 @@
 ## Dev
 [LSP Servers](https://langserver.org/)  
 [Libopencm3](https://libopencm3.org/docs/latest/html/index.html)  
-[LinuxVox](https://linuxvox.com/)
-[Regex101](https://regex101.com/)
+[LinuxVox](https://linuxvox.com/)  
+[Regex101](https://regex101.com/)  
 ### Bash
 [Bash Bible](https://github.com/dylanaraps/pure-bash-bible/)  
 ### Latex
 [Table Generator](https://www.tablesgenerator.com/)  
 [Detexify Symbols](https://detexify.kirelabs.org/#/)  
+### eBPF
+[eBPF tutorials](https://github.com/eunomia-bpf/bpf-developer-tutorial)  
 ### Markdown
 [Markdown Guide](https://www.markdownguide.org/basic-syntax/)  
 [How to make a README](https://www.makeareadme.com/)  
