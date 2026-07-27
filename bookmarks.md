@@ -12,37 +12,37 @@
 * [Miscellaneous](#Miscellaneous)
 
 ## Library
-[Papers We Love](github.com/papers-we-love/papers-we-love)
+[Papers We Love](https://github.com/papers-we-love/papers-we-love)
 
 ## Dev
-[My Github](github.com/Baptiste-Renard)
-[My Codeberg](codeberg.org/Baptiste-Renard)
-[LSP Servers](langserver.org/)
-[Libopencm3](libopencm3.org/docs/latest/)
+[My Github](https://github.com/Baptiste-Renard)
+[My Codeberg](https://codeberg.org/Baptiste-Renard)
+[LSP Servers](https://langserver.org/)
+[Libopencm3](https://libopencm3.org/docs/latest/html/index.html)
 ### Bash
-[Bash Bible](github.com/dylanaraps/pure-bash-bible/)
+[Bash Bible](https://github.com/dylanaraps/pure-bash-bible/)
 ### Latex
-[Table Generator](tablesgenerator.com/)
-[Detexify Symbols](detexify.kirelabs.org/#/)
+[Table Generator](https://www.tablesgenerator.com/)
+[Detexify Symbols](https://detexify.kirelabs.org/#/)
 ### Markdown
-[Markdown Guide](markdownguide.org/basic-syntax/)
-[How to make a README](makeareadme.com/)
+[Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+[How to make a README](https://www.makeareadme.com/)
 
 ## ComputerSecurity
-[CTF Handbook](ctf101.org/)
-[Over The Wire](overthewire.org/wargames/)
+[CTF Handbook](https://ctf101.org/)
+[Over The Wire](https://overthewire.org/wargames/)
 
 ## Languages
-[Word Reference](wordreference.com/)
-[English Dictionnary](dictionary.cambridge.org/)
+[Word Reference](https://wordreference.com/)
+[English Dictionnary](https://dictionary.cambridge.org/)
 
 ## Music
-[Dynamic Range DB](dr.loudness-war.info/)
+[Dynamic Range DB](https://dr.loudness-war.info/)
 ### Sources
-[HDTracks](hdtracks.com/)
-[Qobuz](qobuz.com/be-fr/shop)
-[Video Games Music](downloads.khinsider.com/)
+[HDTracks](https://www.hdtracks.com/)
+[Qobuz](https://www.qobuz.com/be-fr/shop)
+[Video Games Music](https://downloads.khinsider.com/)
 
 ## Miscellaneous
-[Online Signup Sheets, Made Dead Simple](slottr.com/login)
-[Wallpapers](wallhaven.cc)
+[Online Signup Sheets, Made Dead Simple](https://www.slottr.com/login)
+[Wallpapers](https://wallhaven.cc/)
