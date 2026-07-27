@@ -10,7 +10,7 @@
 # Set environment
 export EDITOR='vi'
 export PAGER='less'
-export LESS='-R -i --mouse --wheel-lines=5'
+export LESS='-Ri'
 
 
 # History
