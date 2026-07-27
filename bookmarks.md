@@ -17,6 +17,8 @@
 ## Dev
 [LSP Servers](https://langserver.org/)  
 [Libopencm3](https://libopencm3.org/docs/latest/html/index.html)  
+[LinuxVox](https://linuxvox.com/)
+[Regex101](https://regex101.com/)
 ### Bash
 [Bash Bible](https://github.com/dylanaraps/pure-bash-bible/)  
 ### Latex
