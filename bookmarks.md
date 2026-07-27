@@ -15,8 +15,6 @@
 [Papers We Love](https://github.com/papers-we-love/papers-we-love)  
 
 ## Dev
-[My Github](https://github.com/Baptiste-Renard)  
-[My Codeberg](https://codeberg.org/Baptiste-Renard)  
 [LSP Servers](https://langserver.org/)  
 [Libopencm3](https://libopencm3.org/docs/latest/html/index.html)  
 ### Bash
