@@ -1,37 +1,29 @@
-# GDB Useful Commands (C / C++)
-
-This document is a concise but comprehensive reference for common and useful GDB commands when debugging C and C++ programs.
+# GDB Cheat Sheet
 
 ---
 
-## 1. Compiling for Debugging
+## Compiling for Debugging
 
-```bash
-gcc -g -O0 main.c -o main
-```
-
-- `-g` enables debug symbols (lines, variables, functions)
-- `-O0` disables optimizations (strongly recommended)
+With GCC
+- `-g` enables debug symbols
+- `-O0` disables optimizations
 
 ---
 
-## 2. Starting and Stopping Execution
+## Starting and Stopping Execution
 
 ```gdb
-run / c             # Start program from beginning
+help / c            # Help GDB command
+run / r             # Start program from beginning
+run arg1 arg2       # Start program with arguments
 continue / c        # Continue to next breakpoint
 kill                # Kill the debugged process
 quit / q            # Exit GDB
 ```
 
-Interrupt a running program:
-```
-Ctrl-C
-```
-
 ---
 
-## 3. Breakpoints
+## Breakpoints
 
 ### Set Breakpoints
 
@@ -139,9 +131,4 @@ handle SIGSEGV stop print
 
 ```gdb
 tui enable
-```
-
-Or start GDB with:
-```bash
-gdb -tui ./a.out
 ```
