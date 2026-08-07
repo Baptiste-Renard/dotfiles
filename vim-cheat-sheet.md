@@ -50,3 +50,11 @@ You can also use `ctrl+w` prefix instead of the command mode.
 `ctrl+w + w/p` to cycle forward/backwards windows.  
 `ctrl+w + =` to equalize window sizes.  
 `ctrl+w + +/-/</>` to increase/decrease height/width  
+
+## Regex in Substitute
+
+You have to backslash the parentheses for groups.
+Use `\1`, `\2`... , to paste the captured groups.
+`:%s/^[^#]\(.*) (/\1x/g`
+Searches for the pattern `^[^#](.*) (`,
+and replaces it by the first captured group and then the char 'x'.
