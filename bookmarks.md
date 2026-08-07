@@ -7,6 +7,7 @@
     * [Latex](#Latex)
     * [eBPF](#eBPF)
     * [Markdown](#Markdown)
+    * [Web](#Web)
 * [ComputerSecurity](#ComputerSecurity)
 * [Languages](#Languages)
 * [Music](#Music)
@@ -31,6 +32,8 @@
 ### Markdown
 [Markdown Guide](https://www.markdownguide.org/basic-syntax/)  
 [How to make a README](https://www.makeareadme.com/)  
+### Web
+[Setup a website](https://landchad.net/)  
 
 ## ComputerSecurity
 [CTF Handbook](https://ctf101.org/)  

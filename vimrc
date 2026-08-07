@@ -10,17 +10,20 @@ set smartindent
 
 
 "decoration
+set encoding=utf-8
 set cursorline
+set colorcolumn=80
 set nonumber
+set listchars=tab:▸\ ,trail:·
+set list
 syntax on
 " enable 24-bit color
 "if exists('+termguicolors')
 "  set termguicolors
 "endif
-" ensure vim uses dark theme (sometimes fails to query in tmux and default to light theme)
+"ensure vim uses dark theme
+"(sometimes fails to query in tmux and default to light theme)
 set background=dark
-set listchars=tab:▸\ ,trail:·
-set list
 
 
 "search
@@ -37,7 +40,6 @@ set ttimeoutlen=50
 
 
 "dump
-set encoding=utf-8
 set hidden             "switch buffers without having to save them
 set nocompatible       "don't force compatibility with vi
 filetype plugin on
