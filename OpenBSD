@@ -1,0 +1,50 @@
+# Network:
+em -> eth, iwm -> wifi
+List interfaces:    ifconfig
+Scan:               ifconfig <interface> scan
+Info:               ifconfig <interface>
+Start:              ifconfig <interface> up/down
+Join:               ifconfig join <SSID> wpakey <password>
+
+Config files: /etc/hostname.<interface>
+    inet autoconf
+    inet6 autoconf
+    join "<network>" wpakey "passphrase" priority 10
+
+restart deamon: rcctl restart sshd
+
+# Power
+Status:             apm
+Set power to auto:  apm -A
+Sleep:              apm -S
+Shut down:          shutdown -p now
+
+# Peripherals:
+List options:    doas wsconsctl
+Set Option:      doas wsconsctl peripheral.option=value
+List available encodings: kbd -l => keyboard.encoding=..
+On X11: setxkbmap us/be
+
+# Doas
+Config file: /etc/doas.conf
+permit allow/persist <user> as root   # allow user to persist as root
+permit persist :wheel as root         # allow user of group "wheel" to root
+permit nopass <user> cmd wsconsctl args display.brightness=50
+check config file: doas -C /etc/doas.conf
+
+# X11
+Start:      startx
+Use i3:     echo 'exec i3' > $HOME/.xinitrc
+
+# Xterm
+Ctrl+left/middle/right # runtime config
+
+# Package manager
+Autoremove:             pkg_delete
+Remove packet:          pkg_delete -a <pkg>
+Query for a package:    pkg_info -Q <query>
+Get info:               pkg_info <pkg>
+Query dependencies:     pkg_add -s <pkg>
+
+# Init system (RC)
+Get help: rcctl
