@@ -18,6 +18,9 @@ set $menu wmenu-run
 
 output * bg $HOME/.sway/bg fill
 
+default_border pixel 4
+default_floating_border pixel 4
+
 ### Idle configuration
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
