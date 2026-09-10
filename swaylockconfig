@@ -1,0 +1,4 @@
+# `ln -s $HOME/dotfiles/swaylockconfig $HOME/.swaylock/config`
+#image=$HOME/.sway/bg
+color=000000
+indicator-idle-visible
