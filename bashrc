@@ -6,6 +6,8 @@ export EDITOR='vi'
 export PAGER='less'
 export LESS='-Ri'
 
+export PATH="$HOME/.local/bin:$PATH"
+
 
 # History
 
@@ -57,11 +59,13 @@ else
     alias ls='ls -p'
 fi
 
-if echo | grep --color=auto "" >/dev/null 2>&1; then
+if command -v grep >/dev/null 2>&1 &&
+        echo | grep --color=auto "" >/dev/null 2>&1; then
     alias grep='grep --color=auto'
 fi
 
-if diff --color=auto /dev/null /dev/null >/dev/null 2>&1; then
+if command -v diff >/dev/null 2>&1 &&
+     diff --color=auto /dev/null /dev/null >/dev/null 2>&1; then
     alias diff='diff --color=auto'
 fi
 
@@ -88,6 +92,10 @@ fi
 
 if command -v vim >/dev/null 2>&1; then
     alias vi='vim'
+fi
+
+if command -v xdg-open >/dev/null 2>&1; then
+    alias open='xdg-open'
 fi
 
 
