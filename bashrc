@@ -84,9 +84,9 @@ elif command -v apt >/dev/null 2>&1; then
 elif command -v dnf >/dev/null 2>&1; then
     # Fedora
     if command -v doas >/dev/null 2>&1; then
-        alias upup='doas dnf upgrade'
+        alias upup='doas dnf upgrade --refresh'
     elif command -v sudo >/dev/null 2>&1; then
-        alias upup='sudo dnf upgrade'
+        alias upup='sudo dnf upgrade --refresh'
     fi
 fi
 
