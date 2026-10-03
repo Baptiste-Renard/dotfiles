@@ -43,9 +43,6 @@ shopt -u extglob
 shopt -u nullglob
 # set -o vi
 
-# Disable bell
-bind 'set bell-style none'
-
 
 # Aliases
 
