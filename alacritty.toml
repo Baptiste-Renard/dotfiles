@@ -16,3 +16,8 @@ dynamic_title = true
 
 [mouse]
 hide_when_typing = true
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
