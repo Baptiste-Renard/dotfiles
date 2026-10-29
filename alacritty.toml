@@ -1,7 +1,7 @@
 #https://alacritty.org/config-alacritty.html
 #man 5 alacritty
 [font]
-size = 17
+size = 23
 
 [env]
 TERM = "xterm-256color"
@@ -13,7 +13,11 @@ blur=true
 #decorations = "None"
 #startup_mode = "Maximized"      # Or "Fullscreen"
 dynamic_title = true
-dimensions= { columns = 60, lines = 20 }
+dimensions= { columns = 80, lines = 25 }
 
 [mouse]
 hide_when_typing = true
+
+[terminal.shell]
+program = "/bin/sh"
+args = ["-c", "if command -v tmux >/dev/null 2>&1; then exec tmux new-session -A -s main; else exec \"${SHELL:-/bin/sh}\"; fi"]
