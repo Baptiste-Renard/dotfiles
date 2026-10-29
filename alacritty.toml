@@ -1,7 +1,7 @@
 #https://alacritty.org/config-alacritty.html
 #man 5 alacritty
 [font]
-size = 25
+size = 17
 
 [env]
 TERM = "xterm-256color"
@@ -10,14 +10,10 @@ resize_increments = "True"      # discrete steps equal to cell dimensions
 [window]
 opacity=1
 blur=true
-decorations = "None"
-startup_mode = "Maximized"      # Or "Fullscreen"
+#decorations = "None"
+#startup_mode = "Maximized"      # Or "Fullscreen"
 dynamic_title = true
+dimensions= { columns = 60, lines = 20 }
 
 [mouse]
 hide_when_typing = true
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
