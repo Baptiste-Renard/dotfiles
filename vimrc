@@ -12,7 +12,7 @@ set smartindent
 "decoration
 set encoding=utf-8
 set cursorline
-set colorcolumn=80
+"set colorcolumn=80
 set nonumber
 set listchars=tab:▸\ ,trail:·
 set list
