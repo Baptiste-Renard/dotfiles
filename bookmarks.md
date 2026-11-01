@@ -8,6 +8,7 @@
     * [eBPF](#eBPF)
     * [Markdown](#Markdown)
     * [Web](#Web)
+* [Networking](#Networking)
 * [ComputerSecurity](#ComputerSecurity)
 * [Languages](#Languages)
 * [Music](#Music)
@@ -34,6 +35,13 @@
 [How to make a README](https://www.makeareadme.com/)  
 ### Web
 [Setup a website](https://landchad.net/)  
+
+## Networking
+[DNS reverse lookup](https://viewdns.info/)
+[BGP tools](https://bgp.tools/)
+[RIPE stats](https://stat.ripe.net/)
+[Cloudflare radar](https://radar.cloudflare.com/)
+[VirusTotal](https://www.virustotal.com)
 
 ## ComputerSecurity
 [CTF Handbook](https://ctf101.org/)  
