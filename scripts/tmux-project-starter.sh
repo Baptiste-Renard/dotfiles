@@ -18,8 +18,13 @@ project=$(find . ! -name . -prune -type d -perm -u+x | sed 's|^\./||' | sort |
 
 cd -- "$project" || exit 1
 
-if ! tmux has-session -t "=$project"; then
+if ! tmux has-session -t "=$project" >/dev/null 2>&1; then
     tmux new-session -d -s "$project" -n shell
+
+    if command -v git >/dev/null 2>&1 && git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        tmux send-keys -t "=$project:shell" 'git status' Enter
+    fi
+
     if [ -n "$EDITOR" ]; then
         tmux new-window -d -t "=$project:" -n editor "$EDITOR ."
     fi
