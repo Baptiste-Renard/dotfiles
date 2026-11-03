@@ -1,0 +1,38 @@
+#!/bin/sh
+
+if ! command -v tmux >/dev/null 2>&1; then
+    echo "tmux not found" >&2
+    exit 1
+fi
+
+if ! command -v fzf >/dev/null 2>&1; then
+    echo "fzf not found" >&2
+    exit 1
+fi
+
+dir=${PROJECTS_DIR:-$HOME/projects}
+cd -- "$dir" || exit 1
+
+project=$(find . ! -name . -prune -type d -perm -u+x | sed 's|^\./||' | sort |
+    fzf --prompt='project> ' --preview 'ls -lha {}') || exit 1
+
+if ! tmux has-session -t "=$project"; then
+    tmux new-session -d -s "$project" -n shell
+    if [ -n "$EDITOR" ]; then
+        tmux new-window -d -t "=$project:" -n editor "$EDITOR ."
+    fi
+
+    if [ -n "$AGENT" ]; then
+        tmux new-window -d -t "=$project:" -n agent "$AGENT"
+    fi
+
+    if [ -n "$IDE" ]; then
+        tmux new-window -d -t "=$project:" -n ide "$IDE ."
+    fi
+fi
+
+if [ -n "$TMUX" ]; then
+    tmux switch-client -t "=$project"
+else
+    tmux attach-session -t "=$project"
+fi
