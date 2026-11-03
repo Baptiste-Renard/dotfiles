@@ -16,6 +16,8 @@ cd -- "$dir" || exit 1
 project=$(find . ! -name . -prune -type d -perm -u+x | sed 's|^\./||' | sort |
     fzf --prompt='project> ' --preview 'ls -lha {}') || exit 1
 
+cd -- "$project" || exit 1
+
 if ! tmux has-session -t "=$project"; then
     tmux new-session -d -s "$project" -n shell
     if [ -n "$EDITOR" ]; then
