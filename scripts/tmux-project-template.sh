@@ -3,6 +3,8 @@
 name="dummy"
 dir="$HOME/projects/dummy"
 
+cd -- "$dir" || { echo "no such directory: $dir" >&2; exit 1; }
+
 if ! command -v tmux >/dev/null 2>&1; then
     echo "tmux not found" >&2
     exit 1
@@ -18,7 +20,7 @@ fi
 
 if ! tmux has-session -t "=$name" >/dev/null 2>&1; then
     # Create a detached session in the editor
-    tmux new-session -d -s "$name" -c "$dir" -n editor 'vim .'
+    tmux new-session -d -s "$name" -n editor 'vim .'
     # Use -e VAR="value" to set environment variables
 
     tmux set-option -t "=$name" status-left "[$name] "
@@ -31,6 +33,7 @@ if ! tmux has-session -t "=$name" >/dev/null 2>&1; then
     tmux send-keys -t "=$name:launch" 'docker-compose up -d' Enter # Enter is optional
     tmux select-window -t "=$name:editor"
     #tmux select-pane -t "=$name:logs.0"
+    # you can use -c to change the directory. It's simpler to cd inside the script itself
 fi
 
 if [ -n "$TMUX" ]; then
