@@ -33,6 +33,11 @@ if ! tmux has-session -t "=$project" >/dev/null 2>&1; then
         tmux new-window -d -t "=$project:" -n agent "$AGENT"
     fi
 
+    if [ ! -d "/tmp/$project" ]; then
+        mkdir "/tmp/$project" >/dev/null 2>&1
+    fi
+    tmux new-window -d -t "=$project:" -c "/tmp/$project" -n tmp
+
     if [ -n "$IDE" ]; then
         tmux new-window -d -t "=$project:" -n ide "$IDE ."
     fi

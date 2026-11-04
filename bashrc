@@ -92,6 +92,7 @@ fi
 
 if command -v vim >/dev/null 2>&1; then
     alias vi='vim'
+    export EDITOR='vim'
 fi
 
 if command -v xdg-open >/dev/null 2>&1; then
