@@ -142,6 +142,7 @@ if ! shopt -oq posix; then
     fi
 fi
 
-if [ -r $HOME/.bashrcplus ]; then
-    source $HOME/.bashrcplus # I put rustup/juliaup there
+# Machine local configuration file (e.g rustup, juliaup, etc...)
+if [ -r $HOME/.bashrclocal ]; then
+    source $HOME/.bashrclocal
 fi
