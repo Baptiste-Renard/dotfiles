@@ -116,6 +116,23 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]> \[\033[2 q\]'
+    for f in \
+        "$HOME/.git-prompt.sh" \
+        /usr/share/git-core/contrib/completion/git-prompt.sh \
+        /usr/share/git/completion/git-prompt.sh \
+        /usr/lib/git-core/git-prompt.sh
+    do
+        if [ -r "$f" ]; then
+            . "$f"
+            GIT_PS1_SHOWDIRTYSTATE=1
+            #GIT_PS1_SHOWUNTRACKEDFILES=1
+            GIT_PS1_SHOWUPSTREAM=auto
+            PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;35m\]$(__git_ps1 " (%s)")\[\033[00m\]> \[\033[2 q\]'
+            break
+        fi
+    done
+    unset f
+
 else
     ps1='\u@\h:\w> '
 fi
