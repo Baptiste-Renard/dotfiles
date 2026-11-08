@@ -25,6 +25,8 @@ if ! tmux has-session -t "=$project" >/dev/null 2>&1; then
         tmux send-keys -t "=$project:shell" 'git status' Enter
     fi
 
+    tmux new-window -d -t "=$project:" -n logs
+
     if [ -n "$EDITOR" ]; then
         tmux new-window -d -t "=$project:" -n editor "$EDITOR ."
     fi
