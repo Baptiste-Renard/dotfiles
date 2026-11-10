@@ -33,7 +33,7 @@ ykman fido access change-pin --pin OLDPIN    # change an existing PIN
 - The PIN belongs **only to FIDO2**. It is shared by passkeys, LUKS, pam_u2f and SSH `-sk` keys.
 - 4 to 63 characters, letters allowed.
 - After 3 wrong tries in a row, unplug and replug the key. After 8 wrong tries in total, FIDO2 is locked.
-- ⚠️ `ykman fido reset` wipes **all** passkeys and FIDO2 credentials (LUKS, SSH, websites).
+- `ykman fido reset` wipes **all** passkeys and FIDO2 credentials (LUKS, SSH, websites).
 
 ### LED meanings
 | LED | Meaning |
@@ -57,7 +57,7 @@ ykman otp delete 1                  # remove only the short-touch OTP (keeps slo
 ykman otp swap                      # move OTP to long press (~3 s); swaps slots 1 and 2
 ```
 
-⚠️ If slot 2 holds HMAC challenge-response (e.g. for KeePassXC), **don't** disable OTP. Use `ykman otp delete 1` instead.
+If slot 2 holds HMAC challenge-response (e.g. for KeePassXC), **don't** disable OTP. Use `ykman otp delete 1` instead.
 None of these affect FIDO2 (LUKS, passkeys, SSH).
 
 ---
@@ -148,7 +148,7 @@ sudo systemd-cryptenroll --fido2-device=auto /dev/nvme0n1p3     # enroll a secon
 sudo systemd-cryptenroll --wipe-slot=fido2 /dev/nvme0n1p3       # remove all FIDO2 enrollments
 sudo cryptsetup luksChangeKey /dev/nvme0n1p3                     # change the passphrase
 ```
-⚠️ Never wipe the passphrase slot. It is your recovery.
+Never wipe the passphrase slot. It is your recovery.
 
 ### Optional: new volume key (only if the old passphrase or header may be compromised)
 ```bash
@@ -164,20 +164,63 @@ Back up your data first and keep the laptop on AC power. Afterwards, delete old 
 ```bash
 sudo dnf install pam-u2f pamu2fcfg
 mkdir -p ~/.config/Yubico
-pamu2fcfg -N > ~/.config/Yubico/u2f_keys      # -N = require PIN + touch
+pamu2fcfg -N > ~/.config/Yubico/u2f_keys      # -N (--pin-verification) = require PIN + touch
 ```
-Second key: `pamu2fcfg -n -N` and paste the output **on the same line** in `u2f_keys`.
+- Without `-N`, the key only needs a **touch**, and the FIDO2 PIN is never asked.
+- With `-N`, the credential is marked `+pin` in `u2f_keys`, and pam_u2f enforces it. No PAM edit is needed.
+- To switch between the two modes, re-run the command. The `>` replaces the file.
+
+### Add a second (backup) key
+Set a PIN on the new key first with `ykman fido access change-pin`. Each key has its own PIN.
+
+With **only the new key** plugged in:
+```bash
+pamu2fcfg -n -N >> ~/.config/Yubico/u2f_keys   # -n = omit username, append to the existing line
+cat ~/.config/Yubico/u2f_keys
+```
+The file must be **one line per user**. If the new credential landed on a second line, join the two lines by hand:
+```
+username:cred1,...,+presence+pin:cred2,...,+presence+pin
+```
+Either key then works on its own.
+
+A second key also needs its own:
+- LUKS enrollment (section 2, "Manage key slots")
+- SSH key (section 4)
+- registration as a passkey on each website
 
 ### Enable it (keep a root shell open while testing: `sudo -i`)
 ```bash
-sudo authselect enable-feature with-pam-u2f        # key OR password
+authselect current                                 # Show current
+
+sudo authselect enable-feature with-pam-u2f        # key OR password (recommended)
 # or
 sudo authselect enable-feature with-pam-u2f-2fa    # password AND key
 ```
 
+Switch from 2FA to "key OR password":
+```bash
+sudo authselect disable-feature with-pam-u2f-2fa
+sudo authselect enable-feature with-pam-u2f
+```
+
+With `with-pam-u2f`, the password always works as a fallback, so you can't be locked out with a single key.
+
+### Using it at the login / lock screen
+- **Key plugged in:** leave the password field empty (or type the FIDO2 PIN if you used `-N`), press Enter, then touch the key when it blinks.
+- **Key not plugged in:** type your account password as usual.
+- **Key plugged in, but you want to use the password:** pam_u2f may wait for a touch first. Touch the key, or unplug it.
+
+**With `-N`:** the login screen has one field only. If the key is plugged in and you type your **account password**, it may be tried as the FIDO2 PIN and count as a wrong attempt. 8 wrong attempts lock FIDO2, and a reset then wipes passkeys, LUKS and SSH credentials. Unplug the key before typing the password. Test this once on purpose first.
+
+Check remaining PIN attempts:
+```bash
+ykman fido info
+```
+
 ### Test in a new terminal
 ```bash
-sudo -k; sudo true
+sudo -k; sudo true      # expect: PIN prompt (if -N), then touch
 ```
 
 ### Undo
@@ -194,7 +237,7 @@ Note: logging in with the key instead of the password means KWallet won't unlock
 
 ### Create a key
 ```bash
-ssh-keygen -t ed25519-sk -O resident -O verify-required -C "baptiste-yubikey"
+ssh-keygen -t ed25519-sk -O resident -O verify-required -C "key-name"
 ```
 - The private key never leaves the YubiKey. `~/.ssh/id_ed25519_sk` is just a handle.
 - A passphrase is optional; the PIN + touch already protect it.
