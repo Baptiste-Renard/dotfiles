@@ -253,6 +253,20 @@ For GitHub/GitLab, paste the contents of `id_ed25519_sk.pub` into the SSH keys s
 ssh user@server        # PIN + touch
 ```
 
+### Make it the default key
+SSH already finds `~/.ssh/id_ed25519_sk` on its own, but it tries `id_ed25519` first. To put the YubiKey first, add this at the **end** of `~/.ssh/config`:
+```
+Host *
+    IdentityFile ~/.ssh/id_ed25519_sk
+    # optional: passphrase-protected backup key, tried second
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+```
+- Keys are tried in the order listed.
+- `IdentitiesOnly yes` means SSH offers only these keys, not every key in the agent or in `~/.ssh`. This avoids "Too many authentication failures" errors.
+- Keep `Host *` at the end. SSH uses the first value it finds for each setting, so more specific `Host` blocks above it can still pick a different key.
+- Comments in this file must be on their own line, not after a value.
+
 ### Use on another computer
 ```bash
 # Save the handle files
